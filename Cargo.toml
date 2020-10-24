@@ -6,7 +6,7 @@ edition = "2018"
 description = "PIC-like diagramming language to SVG converter"
 repository = "https://github.com/kinnison/pikchr"
 readme = "README.md"
-keywords = ["markdown", "md", "html", "svg", "pic", "pikchr"]
+keywords = ["markdown", "md", "html", "svg", "pic"]
 license = "MIT OR Apache-2.0"
 
 [dependencies]

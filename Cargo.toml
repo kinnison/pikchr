@@ -3,8 +3,11 @@ name = "pikchr"
 version = "0.1.0"
 authors = ["Daniel Silverstone (Windows) <dsilvers@digital-scurf.org>"]
 edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "PIC-like diagramming language to SVG converter"
+repository = "https://github.com/kinnison/pikchr"
+readme = "README.md"
+keywords = ["markdown", "md", "html", "svg", "pic", "pikchr"]
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 libc = "0.2"

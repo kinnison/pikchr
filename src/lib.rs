@@ -1,4 +1,32 @@
-/// Pikchr binding
+//! Pikchr image creation binding
+//!
+//! This crate provides a binding for the
+//! [`pikchr`](https://pikchr.org/home/doc/trunk/homepage.md) diagramming
+//! language.  Using this crate you can convert PIC-like markup
+//! into SVG diagrams trivially.  If you are embedding into HTML then
+//! you can have any errors generated as HTML, otherwise errors are
+//! generated as plain text.
+//!
+//! The main interface is the [`Pikchr`] struct, specifically its
+//! [`Pikchr::render`] function.
+//!
+//! ```
+//! use pikchr::{Pikchr, PikchrFlags};
+//!
+//! let INPUT = r#"
+//! arrow right 200% "Markdown" "Source"
+//! box rad 10px "Markdown" "Formatter" "(docs.rs/markdown)" fit
+//! arrow right 200% "HTML+SVG" "Output"
+//! arrow <-> down 70% from last box.s
+//! box same "Pikchr" "Formatter" "(docs.rs/pikchr)" fit
+//! "#;
+//!
+//! let pic = Pikchr::render(INPUT, None, PikchrFlags::default()).unwrap();
+//!
+//! println!("{}", pic);
+//! ```
+//! <svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 475.315 195.84"><polygon points="146,37 134,41 134,33" style="fill:rgb(0,0,0)"/><path d="M2,37L140,37"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" /><text x="74" y="25" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text><text x="74" y="49" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Source</text><path d="M161,72L309,72A15 15 0 0 0 324 57L324,17A15 15 0 0 0 309 2L161,2A15 15 0 0 0 146 17L146,57A15 15 0 0 0 161 72Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" /><text x="235" y="17" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text><text x="235" y="37" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Formatter</text><text x="235" y="57" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(docs.rs/markdown)</text><polygon points="468,37 457,41 457,33" style="fill:rgb(0,0,0)"/><path d="M324,37L463,37"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" /><text x="396" y="25" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">HTML+SVG</text><text x="396" y="49" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Output</text><polygon points="235,72 239,84 231,84" style="fill:rgb(0,0,0)"/><polygon points="235,123 231,111 239,111" style="fill:rgb(0,0,0)"/><path d="M235,78L235,117"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" /><path d="M178,193L292,193A15 15 0 0 0 307 178L307,138A15 15 0 0 0 292 123L178,123A15 15 0 0 0 163 138L163,178A15 15 0 0 0 178 193Z"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" /><text x="235" y="138" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Pikchr</text><text x="235" y="158" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Formatter</text><text x="235" y="178" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">(docs.rs/pikchr)</text></svg>
+
 use libc::{c_char, c_int, c_uint, c_void, free};
 use std::ffi::{CStr, CString};
 use std::fmt;

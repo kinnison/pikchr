@@ -65,16 +65,21 @@ pub mod raw {
     /// argument to pikchr() in order to cause error message text to come out
     /// as text/plain instead of as text/html
     pub const PIKCHR_PLAINTEXT_ERRORS: c_uint = 0x0001;
+
+    /// Alter colour choices to make diagrams more suitable for rendering in
+    /// a dark settings such as dark-mode web pages.
+    pub const PIKCHR_DARK_MODE: c_uint = 0x0002;
 }
 
 /// Flags for converting pikchr source
 ///
 /// You can construct a default set of flags using the [`std::default::Default`] trait
 ///
-/// The default flags will generate plain text errors
+/// The default flags will generate plain text errors and light-mode diagrams
 #[derive(Copy, Clone)]
 pub struct PikchrFlags {
     plain_errors: bool,
+    dark_mode: bool,
 }
 
 impl PikchrFlags {
@@ -114,21 +119,65 @@ impl PikchrFlags {
         self.plain_errors = false;
         self
     }
+
+    /// Return whether or not dark mode will be used for images
+    ///
+    /// ```
+    /// # use pikchr::PikchrFlags;
+    /// let flags = PikchrFlags::default();
+    /// assert!(!flags.dark_mode());
+    /// ```
+    pub fn dark_mode(&self) -> bool {
+        self.dark_mode
+    }
+
+    /// Set the dark-mode flag
+    ///
+    /// ```
+    /// # use pikchr::PikchrFlags;
+    /// let mut flags = PikchrFlags::default();
+    /// flags.use_dark_mode();
+    /// assert!(flags.dark_mode());
+    /// ```
+    pub fn use_dark_mode(&mut self) -> &mut PikchrFlags {
+        self.dark_mode = true;
+        self
+    }
+
+    /// Clear the dark-mode flag
+    ///
+    /// ```
+    /// # use pikchr::PikchrFlags;
+    /// let mut flags = PikchrFlags::default();
+    /// flags.use_dark_mode();
+    /// flags.clear_dark_mode();
+    /// assert!(!flags.dark_mode());
+    /// ```
+    pub fn clear_dark_mode(&mut self) -> &mut PikchrFlags {
+        self.dark_mode = false;
+        self
+    }
 }
 
-impl Into<c_uint> for PikchrFlags {
-    fn into(self) -> c_uint {
-        if self.plain_errors {
-            raw::PIKCHR_PLAINTEXT_ERRORS
-        } else {
-            0
+impl From<PikchrFlags> for c_uint {
+    fn from(val: PikchrFlags) -> c_uint {
+        let mut ret: c_uint = 0;
+        if val.plain_errors {
+            ret |= raw::PIKCHR_PLAINTEXT_ERRORS;
         }
+        if val.dark_mode {
+            ret |= raw::PIKCHR_DARK_MODE;
+        }
+        ret
     }
 }
 
 impl std::default::Default for PikchrFlags {
     fn default() -> Self {
-        Self { plain_errors: true }
+        Self {
+            plain_errors: true,
+            dark_mode: false,
+        }
     }
 }
 

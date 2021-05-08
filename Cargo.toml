@@ -1,6 +1,6 @@
 [package]
 name = "pikchr"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Daniel Silverstone <dsilvers@digital-scurf.org>"]
 edition = "2018"
 description = "PIC-like diagramming language to SVG converter"

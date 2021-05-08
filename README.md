@@ -13,7 +13,7 @@ Taken from the [pikchr](https://pikchr.org/home/doc/trunk/homepage.md) homepage:
 > [2]: https://spec.commonmark.org/0.29/#fenced-code-blocks
 
 This crate wrappers the `pikchr.c` version downloaded from that website
-on the 24th October 2020.
+on the 8th May 2021.
 
 You can use it as follows:
 

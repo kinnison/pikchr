@@ -308,7 +308,7 @@ impl Pikchr {
     /// println!("Picture content:\n{}", pic.rendered());
     /// ```
     pub fn rendered(&self) -> &str {
-        &*self
+        self
     }
 }
 

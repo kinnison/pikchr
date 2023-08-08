@@ -2,6 +2,11 @@
 name = "pikchr-cli"
 version = "0.1.2"
 edition = "2021"
+description = "PIC-like diagramming language to SVG converter"
+repository = "https://github.com/kinnison/pikchr"
+readme = "../README.md"
+keywords = ["markdown", "md", "html", "svg", "pic"]
+license = "MIT OR Apache-2.0"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 

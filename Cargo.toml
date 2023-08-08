@@ -2,7 +2,7 @@
 name = "pikchr"
 version = "0.1.2"
 authors = ["Daniel Silverstone <dsilvers@digital-scurf.org>"]
-edition = "2018"
+edition = "2021"
 description = "PIC-like diagramming language to SVG converter"
 repository = "https://github.com/kinnison/pikchr"
 readme = "README.md"
@@ -16,6 +16,4 @@ libc = "0.2"
 cc = "1.0"
 
 [workspace]
-members = [
-    "pikchr-cli",
-]
+members = ["pikchr-cli"]

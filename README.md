@@ -32,8 +32,8 @@ There is a little helper program that reads a Pikchr file named on the
 command line and renders it as SVG to the standard output:
 
 ~~~sh
-cargo run -q foo.pikchr > foo.svg
+cargo run -p pikchr-cli -q foo.pikchr > foo.svg
 ~~~
 
-You can install it with `cargo install pikchr` (`cargo install
---path=.` from the source tree).
+You can install it with `cargo install pikchr-cli` (`cargo install
+--path=pikchr-cli` from the source tree).

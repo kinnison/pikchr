@@ -28,3 +28,12 @@ let piccy = Pikchr::render(
 println!("{}", piccy);
 ```
 
+There is a little helper program that reads a Pikchr file named on the
+command line and renders it as SVG to the standard output:
+
+~~~sh
+cargo run -q foo.pikchr > foo.svg
+~~~
+
+You can install it with `cargo install pikchr` (`cargo install
+--path=.` from the source tree).

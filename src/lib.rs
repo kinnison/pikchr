@@ -319,10 +319,10 @@ mod tests {
     fn validate_diagram() {
         const SOURCE: &str = r#"arrow right 200% "Markdown" "Source""#;
         const OUTPUT: &str = r#"<svg xmlns='http://www.w3.org/2000/svg' viewBox="0 0 152.64 47.88">
-<polygon points="146,23 134,28 134,19" style="fill:rgb(0,0,0)"/>
-<path d="M2,23L140,23"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
-<text x="74" y="12" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text>
-<text x="74" y="35" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Source</text>
+<polygon points="146.16,23.94 134.64,28.26 134.64,19.62" style="fill:rgb(0,0,0)"/>
+<path d="M2.16,23.94L140.4,23.94"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
+<text x="74.16" y="12.24" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text>
+<text x="74.16" y="35.64" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Source</text>
 </svg>
 "#;
         let flags = PikchrFlags::default();

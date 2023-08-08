@@ -247,6 +247,10 @@ impl Pikchr {
         let mut width: c_int = 0;
         let mut height: c_int = 0;
         let source = CString::new(source).map_err(|e| format!("{:?}", e))?;
+        let class = class
+            .map(CString::new)
+            .transpose()
+            .map_err(|e| format!("{:?}", e))?;
         let res: *mut c_char = unsafe {
             raw::pikchr(
                 source.as_ptr() as *const c_char,

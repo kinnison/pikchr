@@ -195,12 +195,7 @@ pub struct Pikchr {
 
 impl Drop for Pikchr {
     fn drop(&mut self) {
-        if self.rendered.is_null() {
-            unsafe {
-                free(self.rendered as *mut c_void);
-            }
-            self.rendered = std::ptr::null();
-        }
+        unsafe { free(self.rendered as *mut c_void) }
     }
 }
 
@@ -255,8 +250,8 @@ impl Pikchr {
             raw::pikchr(
                 source.as_ptr() as *const c_char,
                 class
-                    .map(|s| s.as_ptr() as *const c_char)
-                    .unwrap_or(std::ptr::null()),
+                    .as_ref()
+                    .map_or(std::ptr::null(), |s| s.as_ptr() as *const c_char),
                 flags.into(),
                 &mut width as *mut c_int,
                 &mut height as *mut c_int,
@@ -322,7 +317,7 @@ mod tests {
     #[test]
     fn validate_diagram() {
         const SOURCE: &str = r#"arrow right 200% "Markdown" "Source""#;
-        const OUTPUT: &str = r#"<svg xmlns='http://www.w3.org/2000/svg' style='font-size:initial;' viewBox="0 0 152.64 47.88">
+        const OUTPUT: &str = r#"<svg xmlns='http://www.w3.org/2000/svg' style='font-size:initial;' viewBox="0 0 152.64 47.88" data-pikchr-date="20260403102956">
 <polygon points="146.16,23.94 134.64,28.26 134.64,19.62" style="fill:rgb(0,0,0)"/>
 <path d="M2.16,23.94L140.4,23.94"  style="fill:none;stroke-width:2.16;stroke:rgb(0,0,0);" />
 <text x="74.16" y="12.24" text-anchor="middle" fill="rgb(0,0,0)" dominant-baseline="central">Markdown</text>

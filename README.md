@@ -12,8 +12,7 @@ Taken from the [pikchr](https://pikchr.org/home/doc/trunk/homepage.md) homepage:
 > [1]: https://en.wikipedia.org/wiki/Pic_language
 > [2]: https://spec.commonmark.org/0.29/#fenced-code-blocks
 
-This crate wrappers the `pikchr.c` version downloaded from that website
-on the 28th February 2025.
+This crate wrappers the `pikchr.c` version with the manifest version a7f1c35bc0 and manifest date 2026-04-03 10:29:56 downloaded from that website.
 
 You can use it as follows:
 
